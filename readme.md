@@ -18,6 +18,9 @@ https://the-internet.herokuapp.com/hovers \
 Hover on the pictures and assert the details like User
 
 ### Set-up and start tests
+First, clone the repo to your local folder. 
+Navigate to the local folder where your repo was cloned and run:
+
     npm install
     npx codeceptjs run --steps
 
