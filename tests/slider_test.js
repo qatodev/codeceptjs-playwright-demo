@@ -19,6 +19,6 @@ Scenario('Slider max and min', async (I) => {
     I.dragSlider(slider,-100);
     currentPos = await I.grabTextFrom('//span');
     I.say(`Current slider value is: ${currentPos}`);
-    pause();
-    I.wait(2);
+    //pause();
+    I.wait(1);
 });
