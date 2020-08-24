@@ -1,23 +1,30 @@
 const I = actor();
 
 module.exports = {
-    async brokenImg() { 
-        let urls = await I.grabAttributeFrom('//*/div/img','src');
-        //console.log(urls);
-        let exp = /.*\.com\/(?!img\/)[A-Za-z-]*\.jpg/g;
-        
-        brokenUrls = urls.filter(url => {
+
+    async grabImgs(){
+        return urls = I.grabAttributeFrom('//*/div/img','src');
+    },
+
+    async filterWorkingImgs(urls){
+        let exp = /.*\.com\/(img\/)[A-Za-z-]*\.jpg/g;
+        //let workingUrls = []
+        return workingUrls = urls.filter(url => {
             return url.match(exp);
         });
-        
-        return brokenUrls;
     },
-    
-    async printoConsole(brokenUrls){
-        brokenUrls.forEach((element, i) => {
-            I.say(`Image #${i+1}: ${element}`)
+
+    async filterBrokenImgs(urls){
+        let exp = /.*\.com\/(img\/)[A-Za-z-]*\.jpg/g;
+        //let brokenUrls = []
+        return brokenUrls = urls.filter(url => {
+            return !url.match(exp);
         });
-        
-        //return console.log(brokenUrls.join('\n'));
+    },
+
+    async printoConsole(urls, color){
+        for (let url of urls) {
+            I.say(url,color)
+        }
     }
 }
